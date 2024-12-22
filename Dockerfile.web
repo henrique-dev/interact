@@ -1,0 +1,16 @@
+# Dockerfile development version
+FROM node:20.3.1-alpine AS nextjs-template
+
+RUN apk -U upgrade && apk add --no-cache curl git
+
+WORKDIR /opt/app
+
+COPY application/package.json application/package-lock.json ./
+
+RUN rm -rf node_modules && \
+    rm -rf .next && \
+    npm i
+
+COPY application .
+
+CMD ["npm", "run", "dev"]

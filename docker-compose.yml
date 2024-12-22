@@ -1,0 +1,24 @@
+services:
+  web:
+    stdin_open: true
+    tty: true
+    container_name: nextjs-template_frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile.web
+    volumes:
+      - ./application/:/opt/app
+      - /opt/app/.next/
+      - /opt/app/node_modules/
+    ports:
+      - '$PORT:3000'
+    env_file:
+      - .env
+    environment:
+      PORT: 3000
+    healthcheck:
+      test: curl --fail nextjs-template_frontend:3000/api/health || exit 1
+      interval: 5s
+      retries: 10
+      start_period: 30s
+      timeout: 10s    
