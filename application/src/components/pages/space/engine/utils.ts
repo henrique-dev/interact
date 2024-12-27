@@ -1,6 +1,6 @@
 import { Engine } from './engine';
 
-type RectType = { x: number; y: number; w: number; h: number };
+export type RectType = { x: number; y: number; w: number; h: number };
 
 export const boxesCollision = (engine: Engine, bcA: RectType, bcB: RectType) => {
   const scaleX = engine.scaleX;

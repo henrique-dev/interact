@@ -14,15 +14,15 @@ export const Layout = ({ children }: LayoutProps) => {
       <Image
         alt="Background"
         src="/image/background.png"
-        className="absolute inset-0 -z-10 size-full object-cover"
+        className="absolute inset-0 -z-10 size-full scale-x-[-1]"
         fill
         style={{ objectFit: 'cover' }}
         priority
       />
-      <div className="absolute top-0 flex w-full justify-center p-4">
+      <div className="absolute top-0 z-10 flex w-full justify-center p-4">
         <LanguageSelect />
       </div>
-      <div className="absolute bottom-0 flex w-full justify-center">
+      <div className="absolute bottom-0 z-10 flex w-full justify-center">
         <Footer />
       </div>
       {children}

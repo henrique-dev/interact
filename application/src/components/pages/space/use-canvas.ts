@@ -51,7 +51,7 @@ export const useCanvas = () => {
       engineRef.current.addOtherPlayer(user);
     });
 
-    const useLeaveUnsubscribe = userSubscribe('onuserleave', ({ userId: anotherUserId }) => {
+    const userLeaveUnsubscribe = userSubscribe('onuserleave', ({ userId: anotherUserId }) => {
       if (!engineRef.current) return;
 
       engineRef.current.removeOtherPlayer(anotherUserId);
@@ -69,7 +69,7 @@ export const useCanvas = () => {
       engineRef.current?.stop();
 
       userEnterUnsubscribe();
-      useLeaveUnsubscribe();
+      userLeaveUnsubscribe();
       userMoveUnsubscribe();
     };
   }, [userId, isConnected, assetsLoaded, userSubscribe, userEmitter, setCanvasLoaded]);

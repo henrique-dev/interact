@@ -42,9 +42,13 @@ export class Actor {
     };
   }
 
-  update(_deltaTime: number) {}
+  update(_deltaTime: number) {
+    return;
+  }
 
-  draw(_context: CanvasRenderingContext2D, _camera: Camera) {}
+  draw(_context: CanvasRenderingContext2D, _camera: Camera) {
+    return;
+  }
 
   collidesWith(collisionBox: { x: number; y: number; w: number; h: number }) {
     const scaleX = this.engine.scaleX;

@@ -20,8 +20,7 @@ type SocketListenersProviderProps = {
 };
 
 export const SocketListenersProvider = ({ children }: SocketListenersProviderProps) => {
-  const { spaceId, addUser, addMeetingUser, updateUser, updateMeetingUser, removeUser, removeMeetingUser, clearMeetingUsers } =
-    useContext(ApplicationContext);
+  const { spaceId, addMeetingUser, updateMeetingUser, removeUser, removeMeetingUser, clearMeetingUsers } = useContext(ApplicationContext);
   const { socket, isConnected, userId } = useContext(SocketIoContext);
   const { createConnection, removeConnection, createOffer, createAnswer, updateAnswer, addIceCandidate, removeConnections } =
     useContext(ConnectionContext);
@@ -45,7 +44,7 @@ export const SocketListenersProvider = ({ children }: SocketListenersProviderPro
         userEmitter(user.id, 'onuserenter', JSON.stringify(user));
       });
     },
-    [socket, userId, addUser, createConnection, updateUser]
+    [userId, userEmitter]
   );
 
   const onUserLeaveMeeting = useCallback(
@@ -178,14 +177,14 @@ export const SocketListenersProvider = ({ children }: SocketListenersProviderPro
     ({ userId: otherUserId }: { userId: string }) => {
       socket?.emit('create-meeting', { spaceId, userId: otherUserId });
     },
-    [socket]
+    [socket, spaceId]
   );
 
   const onUserRequestToDisconnect = useCallback(() => {
     clearMeetingUsers();
     removeConnections();
     socket?.emit('leave-meeting', { spaceId });
-  }, [socket, clearMeetingUsers, removeConnections]);
+  }, [socket, spaceId, clearMeetingUsers, removeConnections]);
 
   const onOtherUserMove = useCallback(
     ({ user, data }: { user: UserType; data: {} }) => {
@@ -224,7 +223,21 @@ export const SocketListenersProvider = ({ children }: SocketListenersProviderPro
       socket?.off('user-leave-meeting', onUserLeaveMeeting);
       socket?.off('invalid-space', onInvalidSpace);
     };
-  }, [socket, isConnected, onUserEnterSpace, onUserLeaveSpace, onUserEnterMeeting, onUserLeaveMeeting, onOtherUserMove, onInvalidSpace]);
+  }, [
+    socket,
+    isConnected,
+    onUserEnterSpace,
+    onUserLeaveSpace,
+    onUserEnterMeeting,
+    onUserLeaveMeeting,
+    onOtherUserMove,
+    onInvalidSpace,
+    onAnswerCandidate,
+    onAnswerFound,
+    onCreateAnswer,
+    onCreateOffer,
+    onOfferCandidate,
+  ]);
 
   useEffect(() => userSubscribe('onusermove', onUserMove), [userSubscribe, onUserMove]);
   useEffect(() => userSubscribe('onrequesttoconnect', onUserRequestToConnect), [userSubscribe, onUserRequestToConnect]);

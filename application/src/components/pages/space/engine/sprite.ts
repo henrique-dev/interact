@@ -90,7 +90,7 @@ export class Sprite {
       this.clipRect.y,
       this.clipRect.w,
       this.clipRect.h,
-      scaleX * (this.actor.x - cameraX),
+      scaleX * (this.engine.offsetX + this.actor.x - cameraX),
       scaleY * (this.actor.y - cameraY),
       scaleX * this.actor.width,
       scaleY * this.actor.height
@@ -121,7 +121,7 @@ export class TileSprite {
       this.clipRect.y,
       this.clipRect.w,
       this.clipRect.h,
-      scaleX * (x - cameraX),
+      scaleX * (this.engine.offsetX + x - cameraX),
       scaleY * (y - cameraY),
       scaleX * w,
       scaleY * h

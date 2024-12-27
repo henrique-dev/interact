@@ -2,7 +2,7 @@ import { Actor } from './actor';
 import { Animation } from './animation';
 import { Camera } from './camera';
 import { Engine } from './engine';
-import { SpriteMetrics } from './sprite';
+import { Sprite, SpriteMetrics } from './sprite';
 import { boxesCollision } from './utils';
 
 export type AuthorityType = 'local' | 'remote';
@@ -12,6 +12,7 @@ export class Player extends Actor {
   camera: Camera | undefined;
   speed: number;
   lastMoveSendTimer: number;
+  shadowSprite: Sprite | undefined;
   idleRightAnimation: Animation | undefined;
   idleLeftAnimation: Animation | undefined;
   idleTopAnimation: Animation | undefined;
@@ -73,6 +74,15 @@ export class Player extends Actor {
     }
 
     this.currentAnimation = this.idleBottomAnimation;
+
+    const shadowElement = document.getElementById('img_character_shadow');
+    if (shadowElement) {
+      const shadowImage = shadowElement as HTMLImageElement;
+
+      const spriteMetrics = new SpriteMetrics(shadowImage, 1, 30, shadowImage.width, shadowImage.height);
+
+      this.shadowSprite = spriteMetrics.extractSprites(this.engine, this, 0, 1)[0];
+    }
   }
 
   onKeys(keys: Set<string>, deltaTime: number) {
@@ -211,22 +221,20 @@ export class Player extends Actor {
       if (this.faceDirection.y > 0) {
         this.currentAnimation = this.walkBottomAnimation;
       }
+    } else if (this.faceDirection.x === 0 && this.faceDirection.y === 0) {
+      this.changeCurrentIdleAnimation(this.idleBottomAnimation);
     } else {
-      if (this.faceDirection.x === 0 && this.faceDirection.y === 0) {
+      if (this.faceDirection.x > 0) {
+        this.changeCurrentIdleAnimation(this.idleRightAnimation);
+      }
+      if (this.faceDirection.x < 0) {
+        this.changeCurrentIdleAnimation(this.idleLeftAnimation);
+      }
+      if (this.faceDirection.y < 0) {
+        this.changeCurrentIdleAnimation(this.idleTopAnimation);
+      }
+      if (this.faceDirection.y > 0) {
         this.changeCurrentIdleAnimation(this.idleBottomAnimation);
-      } else {
-        if (this.faceDirection.x > 0) {
-          this.changeCurrentIdleAnimation(this.idleRightAnimation);
-        }
-        if (this.faceDirection.x < 0) {
-          this.changeCurrentIdleAnimation(this.idleLeftAnimation);
-        }
-        if (this.faceDirection.y < 0) {
-          this.changeCurrentIdleAnimation(this.idleTopAnimation);
-        }
-        if (this.faceDirection.y > 0) {
-          this.changeCurrentIdleAnimation(this.idleBottomAnimation);
-        }
       }
     }
 
@@ -238,6 +246,7 @@ export class Player extends Actor {
     context.save();
 
     if (this.currentAnimation) {
+      this.shadowSprite?.draw(context);
       this.currentAnimation.draw(context);
     }
 

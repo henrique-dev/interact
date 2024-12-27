@@ -1,6 +1,6 @@
 import redis from './redis';
 import { UserType } from './users';
-import { replacer } from './utils';
+import { replacer, reviver } from './utils';
 
 type SpaceUserType = UserType & {
   position: {
@@ -20,7 +20,17 @@ const spaces = new Map<string, SpaceType>();
 const userBySpaces = new Map<string, Set<string>>();
 
 export const getSpace = async (spaceId: string) => {
-  return spaces.get(spaceId);
+  try {
+    if (redis) {
+      const space = await redis.get(`space:${spaceId}`);
+      return space ? JSON.parse(space, reviver) : undefined;
+    } else {
+      return spaces.get(spaceId);
+    }
+  } catch (err) {
+    console.warn('cannot get the meeting');
+    console.warn(err);
+  }
 };
 
 const newSpace = (ownerId: string, spaceId: string): SpaceType => {

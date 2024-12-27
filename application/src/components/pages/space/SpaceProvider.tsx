@@ -3,7 +3,6 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from './ApplicationProvider';
 import { ConnectionContext } from './ConnectionProvider';
 import { MediaContext } from './MediaProvider';
-import { SocketListenersContext } from './SocketListenersProvider';
 
 type UserPropertiesType = {
   video: boolean;
@@ -62,7 +61,6 @@ export const SpaceProvider = ({ children }: SpaceProviderProps) => {
   const { spaceId } = useContext(ApplicationContext);
   const { socket, userId, isConnected } = useContext(SocketIoContext);
   const { closeAllConnections } = useContext(ConnectionContext);
-  const { userEmitter, userSubscribe } = useContext(SocketListenersContext);
   const {
     localStreamRef,
     selectedAudioDevice,
@@ -143,8 +141,6 @@ export const SpaceProvider = ({ children }: SpaceProviderProps) => {
     setIsModalConfigureMeetingOpen,
     setIsModalRequireMediaOpen,
     retrieveMediaDevices,
-    userSubscribe,
-    userEmitter,
   ]);
 
   const finishMeeting = useCallback(() => {

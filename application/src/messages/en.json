@@ -2,19 +2,47 @@
   "pages": {
     "home": {
       "home_page": {
-        "title": "A direct way to hold meetings",
-        "description": "Based on WebRTC, meetings are conducted directly between machines, allowing less delay during the conversation. Enjoy video calls, audio calls, and the exchange of messages and files.",
-        "new_space": "New meeting"
+        "title": "Meetings will never be the same",
+        "description": "Use a shared workspace to interact with others during meetings via WebRTC, connecting directly between machines for less delay. Enjoy video calls, audio calls, messaging, and file sharing.",
+        "new_space": "Create space"
       }
     },
     "new_space": {
       "new_space_page": {
-        "need_to_allow_media": "You need to grant permission to access media",
+        "need_to_allow_media": "You need to grant permission to access media.",
         "name": "Name",
         "select_audio_device": "Select audio device",
         "select_video_device": "Select video device",
-        "start_space": "Start Meeting",
+        "start_space": "Enter in space",
         "back": "Back"
+      }
+    },
+    "space": {
+      "chat": {
+        "you": "You"
+      },
+      "link_copy": {
+        "meeting_link": "Meeting link",
+        "you_can_copy": "Copy the link below and share it with others."
+      },
+      "modal_enter_name": {
+        "name": "Name",
+        "need_to_allow_media": "You need to grant permission to access media.",
+        "select_audio_device": "Select audio device",
+        "select_video_device": "Select video device",
+        "start_meeting": "Join meeting",
+        "exit": "Exit"
+      },
+      "modal_configure_media": {
+        "need_to_allow_media": "You need to grant permission to access media.",
+        "select_audio_device": "Select audio device",
+        "select_video_device": "Select video device",
+        "back": "Back"
+      },
+      "modal_require_media": {
+        "cannot_access_media": "Could not access media.",
+        "need_permission": "You need to grant permission to access media in order to join the meeting.",
+        "exit": "Exit"
       }
     }
   },

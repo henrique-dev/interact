@@ -8,7 +8,7 @@ export const SpaceCanvas = () => {
       <canvas ref={registerCanvasElementRefHandler} className="box-border h-full w-full border-4 border-black"></canvas>
       <img
         id="img_floor_and_walls"
-        src="/assets/interior/spritesheet.png"
+        src="/assets/house.png"
         alt="House sprites"
         className="hidden"
         ref={(element) => {
@@ -19,7 +19,7 @@ export const SpaceCanvas = () => {
       />
       <img
         id="img_character_idle"
-        src="/assets/female-character/idle/Idle.png"
+        src="/assets/character-idle.png"
         alt="Idle sprites"
         className="hidden"
         ref={(element) => {
@@ -30,7 +30,7 @@ export const SpaceCanvas = () => {
       />
       <img
         id="img_character_walk"
-        src="/assets/female-character/walk/Walk.png"
+        src="/assets/character-walk.png"
         alt="Walk sprites"
         className="hidden"
         ref={(element) => {
@@ -39,6 +39,7 @@ export const SpaceCanvas = () => {
           }
         }}
       />
+      <img id="img_character_shadow" src="/assets/character-shadow.png" alt="Character shadow" className="hidden" />
     </>
   );
 };

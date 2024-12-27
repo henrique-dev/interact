@@ -10,14 +10,8 @@ import { useVideoElementRefs } from './use-video-element-refs';
 export const UserOverlay = () => {
   const { userId } = useContext(SocketIoContext);
   const { meetingUsers } = useContext(ApplicationContext);
-  const {
-    screenInFocus,
-    userInFocus,
-    videoInFocusRefHandler,
-    localVideoRefHandler,
-    remoteVideoElementRefHandler,
-    changeUserInFocusHandler,
-  } = useVideoElementRefs();
+  const { screenInFocus, videoInFocusRefHandler, localVideoRefHandler, remoteVideoElementRefHandler, changeUserInFocusHandler } =
+    useVideoElementRefs();
 
   const showUserVideos = meetingUsers.length > 0;
 

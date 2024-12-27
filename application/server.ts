@@ -39,6 +39,8 @@ app.prepare().then(async () => {
 
       if (user) return user;
 
+      console.log('the user is invalid');
+
       socket.emit('invalid-space');
 
       return undefined;
@@ -48,6 +50,8 @@ app.prepare().then(async () => {
       const space = await getSpace(spaceId);
 
       if (space) return space;
+
+      console.log('the space is invalid', spaceId);
 
       socket.emit('invalid-space');
 
@@ -59,7 +63,7 @@ app.prepare().then(async () => {
 
       if (meeting) return meeting;
 
-      // socket.emit('invalid-meeting');
+      console.log('the meeting is invalid');
 
       return undefined;
     };
@@ -67,13 +71,23 @@ app.prepare().then(async () => {
     socket.on('register', async () => {
       const user = await getUserAndValidate(socket.id);
 
-      if (!user) return;
+      if (!user) {
+        console.log('cannot register the user');
+        return;
+      }
 
       socket.emit('register-created', user);
     });
 
     socket.on('create-space', async () => {
       const space = await createSpace(socket.id);
+
+      if (!space) {
+        console.log('cannot create the space');
+        return;
+      }
+
+      console.log('the space was created :)');
 
       socket.emit('space-created', space);
     });
@@ -123,7 +137,7 @@ app.prepare().then(async () => {
         y: userData.y,
       };
 
-      await updateSpace(space);
+      updateSpace(space);
 
       socket.to(space.roomId).emit('user-move', { user, data: userData });
     });

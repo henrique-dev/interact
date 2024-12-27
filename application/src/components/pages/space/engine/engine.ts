@@ -49,21 +49,20 @@ export class Engine {
     const playerY = 5 * this.tileSize;
 
     this.offsetX = Math.max(0, this.canvas.clientWidth - this.spaceMap.width) / 2;
+    this.offsetY = Math.max(0, this.canvas.clientHeight - this.spaceMap.height) / 2;
 
-    let cameraX = Math.max(0, playerX - this.canvas.clientWidth / 2);
-    let cameraY = Math.max(0, playerY - this.canvas.clientHeight / 2);
-
-    console.log(Math.max(0, this.canvas.clientWidth - this.spaceMap.width) / 2);
-
-    this.playerCamera = new Camera(this, this.spaceMap, cameraX, cameraY, this.canvas.clientWidth, this.canvas.clientHeight);
+    this.playerCamera = new Camera(this, this.spaceMap, playerX, playerY, this.canvas.clientWidth, this.canvas.clientHeight);
     this.player = this.newPlayer(userId, 'local', playerX, playerY, this.playerCamera);
     this.otherPlayers = new Map();
 
     window.addEventListener('resize', () => {
+      this.offsetX = Math.max(0, this.canvas.clientWidth - this.spaceMap.width) / 2;
+      this.offsetY = Math.max(0, this.canvas.clientHeight - this.spaceMap.height) / 2;
+
       this.scaleX = this.width / this.canvas.clientWidth;
       this.scaleY = this.height / this.canvas.clientHeight;
-      this.playerCamera.width = this.canvas.clientWidth;
-      this.playerCamera.height = this.canvas.clientHeight;
+
+      this.playerCamera.resize(this.player.x, this.player.y, this.canvas.clientWidth, this.canvas.clientHeight);
     });
   }
 
@@ -124,7 +123,9 @@ export class Engine {
     cancelAnimationFrame(this.requestAnimationFrameId);
   }
 
-  onKeyTouch(_keyCode: string) {}
+  onKeyTouch(_keyCode: string) {
+    return;
+  }
 
   onKeys(deltaTime: number) {
     this.player.onKeys(this.keys, deltaTime);
@@ -162,7 +163,5 @@ export class Engine {
     }
 
     this.spaceMap.drawTopLayer(this.context);
-
-    this.playerCamera.draw(this.context);
   }
 }

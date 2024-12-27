@@ -56,10 +56,16 @@ export class SpaceMap {
     return false;
   }
 
-  update(_deltaTime: number) {}
+  update(_deltaTime: number) {
+    return;
+  }
 
-  drawBottomLayer(_context: CanvasRenderingContext2D) {}
-  drawTopLayer(_context: CanvasRenderingContext2D) {}
+  drawBottomLayer(_context: CanvasRenderingContext2D) {
+    return;
+  }
+  drawTopLayer(_context: CanvasRenderingContext2D) {
+    return;
+  }
 }
 
 export class ForestSpaceMap extends SpaceMap {
