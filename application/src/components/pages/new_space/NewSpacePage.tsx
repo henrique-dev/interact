@@ -40,7 +40,7 @@ export const NewSpacePage = () => {
           'h-full w-full space-y-4 rounded-lg bg-zinc-900/90 p-4 sm:h-min sm:max-w-96'
         )}
       >
-        <h1 className="text-3xl text-white">AniMeet</h1>
+        <h1 className="text-3xl text-white">Interact</h1>
         {mediaAllowed === null && (
           <div className="flex h-64 w-full items-center justify-center rounded-lg bg-zinc-800">
             <Spinner size="lg" />
