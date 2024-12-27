@@ -1,17 +1,19 @@
-import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
+import { nextui } from '@nextui-org/react';
+import type { Config } from 'tailwindcss';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
       },
     },
     colors: ({ colors }) => ({
@@ -46,10 +48,10 @@ export default {
       secondary: colors.pink,
     }),
     screens: {
-      xs: "475px",
+      xs: '475px',
       ...defaultTheme.screens,
     },
   },
-  plugins: [require("@tailwindcss/forms")],
-  darkMode: "selector",
+  plugins: [nextui()],
+  darkMode: 'class',
 } satisfies Config;

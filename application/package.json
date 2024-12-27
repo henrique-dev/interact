@@ -3,18 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "nodemon",
+    "build": "next build && tsc --project tsconfig.server.json",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "lint": "next lint",
-    "messages": "node messages.js"
+    "ca": "mkcert create-ca --key certificates/ca.key --cert certificates/ca.crt && npm run cert",
+    "cert": "mkcert create-cert --ca-key certificates/ca.key --ca-cert certificates/ca.crt --key certificates/cert.key --cert certificates/cert.crt"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@next/env": "^15.1.2",
+    "@nextui-org/react": "^2.6.10",
     "@tailwindcss/forms": "^0.5.9",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^11.15.0",
+    "ioredis": "^5.4.2",
     "next": "^15.1.2",
     "next-intl": "^3.26.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
@@ -22,11 +31,14 @@
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.2",
+    "mkcert": "^3.2.0",
+    "nodemon": "^3.1.9",
     "postcss": "^8.4.49",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "server-only": "^0.0.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }
 }

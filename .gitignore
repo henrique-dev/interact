@@ -11,6 +11,7 @@ application/coverage
 # next.js
 application/.next/
 application/out/
+application/dist
 
 # production
 application/build
@@ -31,5 +32,10 @@ application/.vercel
 application/*.tsbuildinfo
 application/next-env.d.ts
 
+# certificates
+application/certificates/*.crt
+application/certificates/*.key
+
 # envs
 .env
+application/.env.local

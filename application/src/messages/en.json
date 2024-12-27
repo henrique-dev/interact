@@ -1,0 +1,30 @@
+{
+  "pages": {
+    "home": {
+      "home_page": {
+        "title": "A direct way to hold meetings",
+        "description": "Based on WebRTC, meetings are conducted directly between machines, allowing less delay during the conversation. Enjoy video calls, audio calls, and the exchange of messages and files.",
+        "new_space": "New meeting"
+      }
+    },
+    "new_space": {
+      "new_space_page": {
+        "need_to_allow_media": "You need to grant permission to access media",
+        "name": "Name",
+        "select_audio_device": "Select audio device",
+        "select_video_device": "Select video device",
+        "start_space": "Start Meeting",
+        "back": "Back"
+      }
+    }
+  },
+  "languages": {
+    "pt-BR": "Portuguese",
+    "en": "English"
+  },
+  "layout": {
+    "footer": {
+      "all_rights_reserved": "Created by Paulo Bacelar"
+    }
+  }
+}

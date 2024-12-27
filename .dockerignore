@@ -33,3 +33,7 @@ application/.vercel
 # typescript
 application/*.tsbuildinfo
 application/next-env.d.ts
+
+# certificates
+application/certificates/*.crt
+application/certificates/*.key

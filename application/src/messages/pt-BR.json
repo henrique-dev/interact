@@ -1,0 +1,58 @@
+{
+  "pages": {
+    "home": {
+      "home_page": {
+        "title": "Uma maneira direta de fazer reuniões",
+        "description": "Utilizando como base o WebRTC, as reuniões são feitas diretamente entre as máquinas, permitindo menos delay durante a conversa. Aproveite chamadas de vídeo, áudio e troca de mensagens e arquivos.",
+        "new_space": "Nova reunião"
+      }
+    },
+    "new_space": {
+      "new_space_page": {
+        "need_to_allow_media": "Você precisa fornecer permissão para acessar a mídia",
+        "name": "Nome",
+        "select_audio_device": "Selecione o dispositivo de áudio",
+        "select_video_device": "Selecione o dispositivo de vídeo",
+        "start_space": "Iniciar reunião",
+        "back": "Voltar"
+      }
+    },
+    "space": {
+      "chat": {
+        "you": "Você"
+      },
+      "link_copy": {
+        "meeting_link": "Link do espaço",
+        "you_can_copy": "Você pode copiar o link abaixo e compartilhar com outros"
+      },
+      "modal_enter_name": {
+        "name": "Nome",
+        "need_to_allow_media": "Você precisa fornecer permissão para acessar a mídia",
+        "select_audio_device": "Selecione o dispositivo de áudio",
+        "select_video_device": "Selecione o dispositivo de vídeo",
+        "start_meeting": "Entrar na reunião",
+        "exit": "Sair"
+      },
+      "modal_configure_media": {
+        "need_to_allow_media": "Você precisa fornecer permissão para acessar a mídia",
+        "select_audio_device": "Selecione o dispositivo de áudio",
+        "select_video_device": "Selecione o dispositivo de vídeo",
+        "back": "Voltar"
+      },
+      "modal_require_media": {
+        "cannot_access_media": "Não foi possível acessar a mídia",
+        "need_permission": "Você precisa fornecer permissão para acessar a mídia para poder entrar na reunião",
+        "exit": "Sair"
+      }
+    }
+  },
+  "languages": {
+    "pt-BR": "Português",
+    "en": "Inglês"
+  },
+  "layout": {
+    "footer": {
+      "all_rights_reserved": "Criado por Paulo Bacelar."
+    }
+  }
+}
