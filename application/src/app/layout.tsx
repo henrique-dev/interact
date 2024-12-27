@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'AniMeeting',
-  description: 'AniMeeting',
+  title: 'Interact',
+  description: 'Interact',
 };
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
