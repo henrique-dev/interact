@@ -121,10 +121,10 @@ export class TileSprite {
       this.clipRect.y,
       this.clipRect.w,
       this.clipRect.h,
-      scaleX * (this.engine.offsetX + x - cameraX),
-      scaleY * (y - cameraY),
-      scaleX * w,
-      scaleY * h
+      parseFloat((scaleX * (this.engine.offsetX + x - cameraX)).toFixed(0)),
+      parseFloat((scaleY * (y - cameraY)).toFixed(0)),
+      parseFloat((scaleX * w + 0.5).toFixed(0)),
+      parseFloat((scaleY * h + 0.5).toFixed(0))
     );
   }
 }

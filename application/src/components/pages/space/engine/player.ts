@@ -79,7 +79,7 @@ export class Player extends Actor {
     if (shadowElement) {
       const shadowImage = shadowElement as HTMLImageElement;
 
-      const spriteMetrics = new SpriteMetrics(shadowImage, 1, 30, shadowImage.width, shadowImage.height);
+      const spriteMetrics = new SpriteMetrics(shadowImage, 1, 25, shadowImage.width, shadowImage.height);
 
       this.shadowSprite = spriteMetrics.extractSprites(this.engine, this, 0, 1)[0];
     }
