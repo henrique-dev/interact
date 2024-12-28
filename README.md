@@ -87,3 +87,8 @@ npm run dev
 
 - Ensure Redis is running if you choose to use it as the storage backend.
 - Check if the configured ports are available in your environment.
+
+## Assets
+
+- https://sscary.itch.io/the-adventurer-female
+- https://penzilla.itch.io/top-down-retro-interior
