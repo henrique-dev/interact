@@ -4,8 +4,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 const languageOptions = [
-  { id: 'pt-BR', description: 'PT', name: 'BR' },
-  { id: 'en', description: 'EN', name: 'US' },
+  { id: 'pt-BR', description: 'PT', name: 'BR', flag: 'BR' },
+  { id: 'en', description: 'EN', name: 'US', flag: 'UK' },
 ];
 
 export const LanguageSelect = () => {
@@ -13,11 +13,13 @@ export const LanguageSelect = () => {
   const { onChangeLanguageHandler } = useLanguage();
   const t = useTranslations();
 
+  const currentOption = languageOptions.find((language) => language.id === locale);
+
   return (
     <Dropdown>
       <DropdownTrigger>
         <Button variant="bordered" className="h-8 w-8" isIconOnly>
-          <Image src={`/image/flags/${locale}.svg`} alt="Country flag" fill style={{ objectFit: 'fill' }} priority />
+          <Image src={`/image/flags/${currentOption?.flag}.svg`} alt="Country flag" fill style={{ objectFit: 'fill' }} priority />
         </Button>
       </DropdownTrigger>
       <DropdownMenu onAction={(key) => onChangeLanguageHandler(key)}>
@@ -28,7 +30,7 @@ export const LanguageSelect = () => {
             startContent={
               <>
                 <div className="relative h-5 w-5">
-                  <Image src={`/image/flags/${languageOption.id}.svg`} alt="Country flag" fill style={{ objectFit: 'fill' }} priority />
+                  <Image src={`/image/flags/${languageOption.flag}.svg`} alt="Country flag" fill style={{ objectFit: 'fill' }} priority />
                 </div>
               </>
             }
